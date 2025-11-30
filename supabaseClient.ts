@@ -1,14 +1,17 @@
+// src/supabaseClient.ts
 import { createClient } from '@supabase/supabase-js'
 
-// These will automatically read from .env (local) or Vercel env vars (production)
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
+// Critical: if env vars are missing → don't crash the whole app
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('Supabase URL or anon key missing – falling back to mock data')
+  console.error('Supabase URL or anon key is missing!')
+  console.log('Check Vercel Environment Variables: VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY')
 }
 
+// Create client with fallbacks so app never crashes
 export const supabase = createClient(
-  supabaseUrl ?? 'https://dummy.supabase.co',
-  supabaseAnonKey ?? 'dummy-key'
+  supabaseUrl || 'https://placeholder.supabase.co',
+  supabaseAnonKey || 'placeholder'
 )
