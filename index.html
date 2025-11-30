@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resource Allocation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              // Custom colors if needed, though arbitrary values are used in components for exact match
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Custom scrollbar for the gantt chart area */
+      .gantt-scroll::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+      }
+      .gantt-scroll::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .gantt-scroll::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .gantt-scroll::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      
+      .manual-stripe {
+        background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(107, 114, 128, 0.1) 5px, rgba(107, 114, 128, 0.1) 10px);
+      }
+      
+      @keyframes pulse-green {
+        0%, 100% { background-color: #86efac; }
+        50% { background-color: #bbf7d0; }
+      }
+      .free-slot-highlight {
+        animation: pulse-green 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@2.39.3"
+  }
+}
+</script>
+</head>
+  <body class="bg-[#f8fafc] text-[#1e293b] antialiased overflow-hidden">
+    <div id="root"></div>
+  </body>
+</html>
