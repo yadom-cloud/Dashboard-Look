@@ -11,7 +11,17 @@ import {
     ChevronLeft, ChevronRight, Target, Users, AlertTriangle, AlertCircle, Calendar
 } from 'lucide-react';
 
+
+// Force mock if Supabase fails
+const USE_MOCK_DATA = window.USE_MOCK_DATA || !import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+// Your MOCK_DEVELOPERS, MOCK_TICKETS, MOCK_BLOCKS here (from my previous message)
+const MOCK_DEVELOPERS = [ /* ... paste the array */ ];
+const MOCK_TICKETS = [ /* ... paste the array */ ];
+const MOCK_BLOCKS = [ /* ... paste the array */ ];
 // --- Data Mappers ---
+
+
 const mapDeveloper = (d: any): Developer => ({
     id: d.id, 
     name: d.display_name || d.name || 'Unknown',
