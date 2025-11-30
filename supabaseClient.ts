@@ -1,6 +1,14 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js'
 
-const SUPABASE_URL = 'https://pgpoxuknldfcbzetuvyt.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBncG94dWtubGRmY2J6ZXR1dnl0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0Nzk3OTIsImV4cCI6MjA4MDA1NTc5Mn0.cyyBauP23ptYFtiCT2Qdiz7K2ZE3NmlbG9mo1llE4gg';
+// These will automatically read from .env (local) or Vercel env vars (production)
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('Supabase URL or anon key missing – falling back to mock data')
+}
+
+export const supabase = createClient(
+  supabaseUrl ?? 'https://dummy.supabase.co',
+  supabaseAnonKey ?? 'dummy-key'
+)
